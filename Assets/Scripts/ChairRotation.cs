@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class ChairRotation : MonoBehaviour
 {
-    public delegate void RotationEventHandler(Vector3 rotation, float yRotation);
+    public delegate void RotationEventHandler(
+        Vector3 rotation, 
+        float yRotationNormalized, 
+        float yRotation);
+
     public event RotationEventHandler OnChairRotate;
 
     public float rotationSpeed = 100.0f;
@@ -11,6 +15,7 @@ public class ChairRotation : MonoBehaviour
     public float minRotation = -90.0f;
 
     public float yRotation = 0.0f;
+    public float yRotationNormalized = 0.0f;
 
     static float NormalizeAngle(float angle)
     {
@@ -26,11 +31,12 @@ public class ChairRotation : MonoBehaviour
         bool isRotating = false;
         Vector3 rotationDelta = Vector3.zero;
 
-        yRotation = NormalizeAngle(transform.rotation.eulerAngles.y);
+        yRotation = transform.rotation.eulerAngles.y;
+        yRotationNormalized = NormalizeAngle(transform.rotation.eulerAngles.y);
 
         // Rotate the chair around the y-axis
         if (Input.GetKey(KeyCode.LeftArrow) 
-            && yRotation > minRotation)
+            && yRotationNormalized > minRotation)
         {
             rotationDelta = Vector3.up * -rotationSpeed * Time.deltaTime;
             // transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
@@ -38,7 +44,7 @@ public class ChairRotation : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.RightArrow) 
-            && yRotation < maxRotation)
+            && yRotationNormalized < maxRotation)
         {
             rotationDelta = Vector3.up * rotationSpeed * Time.deltaTime;
             // transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
@@ -48,7 +54,7 @@ public class ChairRotation : MonoBehaviour
         if (isRotating)
         {
             transform.Rotate(rotationDelta);
-            this.OnChairRotate?.Invoke(rotationDelta, yRotation);
+            this.OnChairRotate?.Invoke(rotationDelta, yRotationNormalized, yRotation);
         }
 
     }

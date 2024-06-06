@@ -6,7 +6,7 @@ public class HilecalRotation : MonoBehaviour
     public ChairRotation chairRotation;
 
     public float radius = 3f; // Radius of the helix
-    public float pitch = 1f;  // Pitch of the helix
+    public float pitch = .5f;  // Pitch of the helix
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,7 +26,7 @@ public class HilecalRotation : MonoBehaviour
         chairRotation.OnChairRotate -= OnChairRotation;
     }
 
-    private void OnChairRotation(Vector3 rotation, float yRotation)
+    private void OnChairRotation(Vector3 rotation, float yRotationNormalized, float yRotation)
     {
         Debug.Log("OnChairRotation: " + rotation + " yRotation: " + yRotation);
 
