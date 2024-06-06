@@ -1,20 +1,21 @@
 using System;
 using UnityEngine;
 
-public class EnvironmentRotation : MonoBehaviour
+public class HilecalRotation : MonoBehaviour
 {
     public ChairRotation chairRotation;
 
+    public float radius = 3f; // Radius of the helix
+    public float pitch = 1f;  // Pitch of the helix
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (chairRotation == null)
-        {
-            Debug.LogError("ChairRotation not found");
-        }
+        
     }
-    
+
+
     void OnEnable() 
     {
         chairRotation.OnChairRotate += OnChairRotation;
@@ -29,21 +30,21 @@ public class EnvironmentRotation : MonoBehaviour
     {
         Debug.Log("OnChairRotation: " + rotation + " yRotation: " + yRotation);
 
-        transform.Rotate(-rotation);
+        float angleInRadians = yRotation * Mathf.Deg2Rad;
+        
+        // Calculate the new position on the helical ramp
+        float x = radius * Mathf.Cos(angleInRadians);
+        float y = radius * Mathf.Sin(angleInRadians);
+        float z = (pitch / (2 * Mathf.PI)) * angleInRadians;
+
+        // Update the object's position
+        transform.position = new Vector3(x, y, z);
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        // if (Input.GetKey(KeyCode.LeftArrow))
-        // {
-        //     transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
-        // }
-        // if (Input.GetKey(KeyCode.RightArrow))
-        // {
-        //     transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
-        // }
-
         
     }
 }

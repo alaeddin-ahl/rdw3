@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ChairRotation : MonoBehaviour
 {
-    public delegate void RotationEventHandler(Vector3 rotation);
+    public delegate void RotationEventHandler(Vector3 rotation, float yRotation);
     public event RotationEventHandler OnChairRotate;
 
     public float rotationSpeed = 100.0f;
@@ -48,7 +48,7 @@ public class ChairRotation : MonoBehaviour
         if (isRotating)
         {
             transform.Rotate(rotationDelta);
-            this.OnChairRotate?.Invoke(rotationDelta);
+            this.OnChairRotate?.Invoke(rotationDelta, yRotation);
         }
 
     }
