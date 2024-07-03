@@ -35,17 +35,25 @@ public class HelicalStairs : MonoBehaviour
 
             Debug.Log("position: " + position);
 
-            // Calculate the tangent vector
-            float dx_dt = radius * Mathf.Sin(-t);
-            float dy_dt = -radius * Mathf.Cos(-t);
-            float dz_dt = height / (2 * Mathf.PI * numberOfTurns);
+            // // Calculate the tangent vector
+            // float dx_dt = radius * Mathf.Sin(-t);
+            // float dy_dt = -radius * Mathf.Cos(-t);
+            // float dz_dt = height / (2 * Mathf.PI * numberOfTurns);
 
-            // Calculate the rotation angle in degrees
-            float angle = Mathf.Atan2(dy_dt, dx_dt) * Mathf.Rad2Deg;
-            Quaternion localRotation = Quaternion.Euler(0, angle, 0);
+            // // Calculate the rotation angle in degrees
+            // float angle = Mathf.Atan2(dy_dt, dx_dt) * Mathf.Rad2Deg;
+            // Quaternion localRotation = Quaternion.Euler(0, angle, 0);
 
-            // Combine the local rotation with the parent's rotation
-            Quaternion rotation = parent.rotation * localRotation;
+            Vector3 directionToCenter = new Vector3(
+                position.x,
+                position.y,
+                position.z);
+            directionToCenter.y = 0; // Ignore height for rotation to face horizontally to the center
+            Quaternion localRotation = Quaternion.LookRotation(-directionToCenter);
+
+            // Quaternion rotation = parent.rotation * localRotation;
+            Quaternion rotation = localRotation;
+            
 
             Instantiate(cubePrefab, position, rotation, parent);
         }
