@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HelicalStairs : MonoBehaviour
@@ -9,10 +10,11 @@ public class HelicalStairs : MonoBehaviour
     public float numberOfTurns = 1.25f;
     public int numberOfSteps = 13;
     public GameObject cubePrefab; // Assign a cube prefab in the inspector
+    
+    public Transform offsetPosition;
 
-    void Start()
+    void Stert()
     {
-        GenerateHelicalStairs();
     }
 
     // Function to map an input angle to a position on the helical stairs
@@ -45,8 +47,30 @@ public class HelicalStairs : MonoBehaviour
             float z = (height / numberOfSteps) * i;
 
             // Create a new cube at the calculated position
-            Vector3 position = new Vector3(x, z, y);
-            Instantiate(cubePrefab, position, Quaternion.identity, parent);
+            Vector3 position = new Vector3(x, z, y) + offsetPosition.position ;
+
+            Debug.Log("position: " + position);
+
+
+            // Calculate the tangent vector
+            float dx_dt = radius * Mathf.Sin(-t);
+            float dy_dt = -radius * Mathf.Cos(-t);
+            float dz_dt = height / (2 * Mathf.PI * numberOfTurns);
+
+            // Calculate the rotation angle in degrees
+            float angle = Mathf.Atan2(dy_dt, dx_dt) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.Euler(0, angle, 0);
+
+            Instantiate(cubePrefab, position, rotation, parent);
+        }
+    }
+
+    public bool created = false;
+
+    void Update() {
+        if (!created) {
+            created = true;
+            GenerateHelicalStairs();
         }
     }
 }
