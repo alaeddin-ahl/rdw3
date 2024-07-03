@@ -428,7 +428,7 @@ MonoBehaviour:
   height: 4
   width: 4
   numberOfTurns: 1
-  numberOfSteps: 30
+  numberOfSteps: 21
   cubePrefab: {fileID: 8692918970575687448, guid: a95af5b91b7a54d3a813008e71c5a3b1, type: 3}
   offsetPosition: {fileID: 842909930757236672}
   created: 0
@@ -3051,15 +3051,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7606503710922209431}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 842909930757236672}
   - {fileID: 666895014}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &7158242602896327336
 GameObject:
   m_ObjectHideFlags: 0

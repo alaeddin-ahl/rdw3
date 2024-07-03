@@ -33,11 +33,9 @@ public class HelicalStairs : MonoBehaviour
 
         return new Vector3(x, z, y);
     }
-    
     void GenerateHelicalStairs()
     {
         var parent = this.transform;
-
 
         for (int i = 0; i < numberOfSteps; i++)
         {
@@ -47,10 +45,10 @@ public class HelicalStairs : MonoBehaviour
             float z = (height / numberOfSteps) * i;
 
             // Create a new cube at the calculated position
-            Vector3 position = new Vector3(x, z, y) + offsetPosition.position ;
+            Vector3 localPosition = new Vector3(x, z, y);
+            Vector3 position = parent.TransformPoint(localPosition + offsetPosition.position);
 
             Debug.Log("position: " + position);
-
 
             // Calculate the tangent vector
             float dx_dt = radius * Mathf.Sin(-t);
@@ -59,7 +57,10 @@ public class HelicalStairs : MonoBehaviour
 
             // Calculate the rotation angle in degrees
             float angle = Mathf.Atan2(dy_dt, dx_dt) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.Euler(0, angle, 0);
+            Quaternion localRotation = Quaternion.Euler(0, angle, 0);
+
+            // Combine the local rotation with the parent's rotation
+            Quaternion rotation = parent.rotation * localRotation;
 
             Instantiate(cubePrefab, position, rotation, parent);
         }
