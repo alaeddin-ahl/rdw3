@@ -54,41 +54,6 @@ public class HilecalRotation : MonoBehaviour
 
         transform.position = MapAngleToPosition(yRotationNormalized);
 
-        Vector3 directionToCenter = new Vector3(
-                transform.position.x,
-                0,
-                transform.position.z);
-        Quaternion endRotation = Quaternion.LookRotation(-directionToCenter);
-
-        // Calculate direction to the chair's position
-        Vector3 directionToChair = chairRotation.transform.position - transform.position;
-        directionToChair.x = 0;
-        directionToChair.z = 0; // Ignore height for horizontal rotation
-
-        // Set rotation to face the chair
-        // Quaternion targetRotation = Quaternion.LookRotation(directionToChair);
-        // transform.rotation = targetRotation;
-
-        // Calculate the difference in y rotation
-        // float currentYRotation = yRotationNormalized;
-        // float rotationDifference = currentYRotation - previousYRotation;
-
-        // Debug.Log("rotationDifference:"+ rotationDifference);
-
-        // previousYRotation = currentYRotation;
-
-        // transform.RotateAround(chairRotation.transform.position, Vector3.up, rotationDifference);
-
-        // Calculate the relative rotation needed to go from startRotation to endRotation
-        Debug.Log("from: " + transform.rotation + " to: " + endRotation);    
-
-        Quaternion relativeRotation = Quaternion.Inverse(transform.rotation) * endRotation;
-
-        // Extract the angle and axis from the relative rotation
-        relativeRotation.ToAngleAxis(out float angle, out Vector3 axis);
-
-        Debug.Log("angle: " + angle + " axis: " + axis);
-        // transform.RotateAround(chairRotation.transform.position, axis, angle);
     }
 
     public bool IsRotating = false;

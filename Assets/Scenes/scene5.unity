@@ -839,6 +839,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   normalizedDirection: {x: 0, y: 0, z: 0}
   rotationToDirection: {x: 0, y: 0, z: 0, w: 0}
+  relativeRotation: {x: 0, y: 0, z: 0, w: 0}
+  angle: 0
 --- !u!4 &1368989829
 Transform:
   m_ObjectHideFlags: 0
@@ -1044,8 +1046,8 @@ MonoBehaviour:
   rotationSpeed: 50
   maxRotation: 90
   minRotation: -90
-  yRotation: 0
-  yRotationNormalized: 0
+  yRotation: 269.9319
+  yRotationNormalized: -90.06808
 --- !u!1 &15238277837040437
 GameObject:
   m_ObjectHideFlags: 0
