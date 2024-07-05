@@ -38,8 +38,8 @@ public class HilecalRotation : MonoBehaviour
         float t = Mathf.Lerp(0, 2 * Mathf.PI * numberOfTurns, Mathf.InverseLerp(-90, 90, angle));
 
         // Calculate the position
-        float x = radius * Mathf.Cos(t); // Inverted t for opposite direction
-        float y = radius * Mathf.Sin(t); // Inverted t for opposite direction
+        float x = radius * Mathf.Cos(t); 
+        float y = radius * Mathf.Sin(t); 
         float z = (height / (2 * Mathf.PI * numberOfTurns)) * t;
 
         return new Vector3(x, z, y);
