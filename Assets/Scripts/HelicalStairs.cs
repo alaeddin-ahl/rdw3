@@ -47,7 +47,9 @@ public class HelicalStairs : MonoBehaviour
             Quaternion rotation = localRotation;
             
 
-            Instantiate(cubePrefab, position, rotation, parent);
+            GameObject a = Instantiate(cubePrefab, position, rotation, parent);
+
+            a.GetComponent<CubeController>().id = i;
         }
     }
 
