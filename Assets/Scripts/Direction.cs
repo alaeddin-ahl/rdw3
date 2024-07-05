@@ -26,6 +26,13 @@ public class Direction : MonoBehaviour
         normalizedDirection = direction.normalized;
 
         direction.y = 0; // Ignore height for rotation to face horizontally to the center
-        rotationToDirection = Quaternion.LookRotation(-direction);
+        normalizedDirection.y = 0; // Ignore height for rotation to face horizontally to the center
+
+        if (direction != Vector3.zero){
+            rotationToDirection = Quaternion.LookRotation(direction);
+
+            transform.rotation = rotationToDirection;
+        }
+        
     }
 }
