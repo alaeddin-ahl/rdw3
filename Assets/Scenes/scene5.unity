@@ -799,6 +799,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chairRotation: {fileID: 0}
+--- !u!1 &1224667513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1016583549510285323, guid: 423ddd08505f94718aad1701a772e66e, type: 3}
+  m_PrefabInstance: {fileID: 3276033883388917300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1368989827
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,6 +873,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 382931272716034737, guid: 423ddd08505f94718aad1701a772e66e, type: 3}
   m_PrefabInstance: {fileID: 3276033883388917300}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1549639122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224667513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af4db0f0fd50438d9fe8f396f532313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineLength: 1.5
+  lineWidth: 0.025
 --- !u!1 &1693753768
 GameObject:
   m_ObjectHideFlags: 0
@@ -2191,7 +2210,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 382931272716034737, guid: 423ddd08505f94718aad1701a772e66e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 715972736}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1016583549510285323, guid: 423ddd08505f94718aad1701a772e66e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1549639122}
   m_SourcePrefab: {fileID: 100100000, guid: 423ddd08505f94718aad1701a772e66e, type: 3}
 --- !u!23 &3325749598015849381
 MeshRenderer:
