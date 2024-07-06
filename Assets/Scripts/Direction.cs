@@ -6,6 +6,8 @@ public class Direction : MonoBehaviour
     public Transform objectA; 
     public Transform objectB; 
 
+    public Transform objectC;
+
     public Vector3 direction;
     public Vector3 normalizedDirection;
     public Quaternion rotationToDirection;
@@ -13,6 +15,9 @@ public class Direction : MonoBehaviour
     public Quaternion relativeRotation;
 
     public float angle;
+    public Vector3 axis;
+    
+    public float ry;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,23 +42,26 @@ public class Direction : MonoBehaviour
 
             transform.rotation = rotationToDirection;
 
-            Quaternion fromRotation = objectB.rotation;
-            Quaternion toRotation = rotationToDirection;
+            Quaternion fromRotation = transform.rotation;
+            Quaternion toRotation = objectA.rotation;
             relativeRotation = Quaternion.Inverse(fromRotation) * toRotation;
 
 
             // Extract the angle and axis from the relative rotation
             relativeRotation.ToAngleAxis(out float angle, out Vector3 axis);
             this.angle = angle;
+            this.axis = axis;
+
+            this.ry = relativeRotation.eulerAngles.y;
         }
         
 
         if (Input.GetKeyDown(KeyCode.F)){
-            float f = objectA.GetComponent<ChairRotation>().yRotationNormalized;
-
+            // float f = objectA.GetComponent<ChairRotation>().yRotationNormalized;
+            float f = this.ry;
             Debug.Log("F - f: " + f);
 
-            objectB.transform.RotateAround(objectA.transform.position, Vector3.up, f);
+            objectC.transform.RotateAround(objectA.transform.position, Vector3.up, f);
         }
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 public class HilecalRotation : MonoBehaviour
 {
     public ChairRotation chairRotation;
+    public Direction direction;
+
+    public Transform rotationTransform;
 
     // Given parameters
     public float radius = 2.0f;
@@ -31,8 +34,6 @@ public class HilecalRotation : MonoBehaviour
     // Function to map an input angle to a position on the helical stairs
     public Vector3 MapAngleToPosition(float angle)
     {
-        // Clamp the angle to ensure it is within -90 to 90 degrees
-        // angle = Mathf.Clamp(angle, -90, 90);
 
         // Map the angle to the parameter t
         float t = Mathf.Lerp(0, 2 * Mathf.PI * numberOfTurns, Mathf.InverseLerp(-90, 90, angle));
@@ -45,15 +46,22 @@ public class HilecalRotation : MonoBehaviour
         return new Vector3(x, z, y);
     }
 
-    public float   previousYRotation = 0;
+    public float previousYRotation = 0;
 
 
     private void OnChairRotation(Vector3 rotation, float yRotationNormalized, float yRotation)
     {
-        Debug.Log("OnChairRotation: " + rotation + " yRotationNormalized: " + yRotationNormalized);
+        float f= this.direction.ry;
 
-        transform.position = MapAngleToPosition(yRotationNormalized);
+        Debug.Log(
+            "OnChairRotation: " + rotation + 
+            " angle: " + yRotationNormalized + 
+            " f:" + f);
 
+        transform.localPosition = MapAngleToPosition(yRotationNormalized);
+
+        // 
+        rotationTransform.RotateAround(chairRotation.transform.position, Vector3.up, f);
     }
 
     public bool IsRotating = false;
