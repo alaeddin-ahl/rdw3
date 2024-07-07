@@ -6,7 +6,6 @@ public class HilecalRotation : MonoBehaviour
 {
     public ChairRotation chairRotation;
     public Direction direction;
-
     public Transform rotationTransform;
 
     // Given parameters
@@ -15,10 +14,8 @@ public class HilecalRotation : MonoBehaviour
     public float width = 4.0f;
     public float numberOfTurns = 1.0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
     }
 
 
@@ -31,7 +28,7 @@ public class HilecalRotation : MonoBehaviour
     {
         chairRotation.OnChairRotate -= OnChairRotation;
     }
-    // Function to map an input angle to a position on the helical stairs
+
     public Vector3 MapAngleToPosition(float angle)
     {
 
@@ -46,12 +43,11 @@ public class HilecalRotation : MonoBehaviour
         return new Vector3(x, z, y);
     }
 
-    public float previousYRotation = 0;
-
 
     private void OnChairRotation(Vector3 rotation, float yRotationNormalized, float yRotation)
     {
         float f= this.direction.ry;
+        
 
         Debug.Log(
             "OnChairRotation: " + rotation + 
@@ -64,21 +60,8 @@ public class HilecalRotation : MonoBehaviour
         rotationTransform.RotateAround(chairRotation.transform.position, Vector3.up, f);
     }
 
-    public bool IsRotating = false;
-
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            IsRotating = !IsRotating;
-        }
-
-        if (IsRotating)
-        {   
-            float f = 20 * Time.deltaTime;
-            Debug.Log("f: " + f);   
-            transform.RotateAround(chairRotation.transform.position, Vector3.up, f);
-        }
     }
 }

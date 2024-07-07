@@ -11,21 +11,15 @@ public class Direction : MonoBehaviour
     public Vector3 direction;
     public Vector3 normalizedDirection;
     public Quaternion rotationToDirection;
-
     public Quaternion relativeRotation;
 
-    public float angle;
-    public Vector3 axis;
-    
     public float ry;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 positionA = objectA.position;
@@ -34,8 +28,8 @@ public class Direction : MonoBehaviour
         direction = positionB - positionA;
         normalizedDirection = direction.normalized;
 
-        direction.y = 0; // Ignore height for rotation to face horizontally to the center
-        normalizedDirection.y = 0; // Ignore height for rotation to face horizontally to the center
+        direction.y = 0; 
+        normalizedDirection.y = 0; 
 
         if (direction != Vector3.zero){
             rotationToDirection = Quaternion.LookRotation(normalizedDirection);
@@ -48,16 +42,15 @@ public class Direction : MonoBehaviour
 
 
             // Extract the angle and axis from the relative rotation
-            relativeRotation.ToAngleAxis(out float angle, out Vector3 axis);
-            this.angle = angle;
-            this.axis = axis;
+            // relativeRotation.ToAngleAxis(out float angle, out Vector3 axis);
+            // this.angle = angle;
+            // this.axis = axis;
 
             this.ry = relativeRotation.eulerAngles.y;
         }
         
 
         if (Input.GetKeyDown(KeyCode.F)){
-            // float f = objectA.GetComponent<ChairRotation>().yRotationNormalized;
             float f = this.ry;
             Debug.Log("F - f: " + f);
 
