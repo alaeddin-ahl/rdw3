@@ -851,7 +851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1355727072
 Transform:
   m_ObjectHideFlags: 0
@@ -905,6 +905,7 @@ MonoBehaviour:
   normalizedDirection: {x: 0, y: 0, z: 0}
   rotationToDirection: {x: 0, y: 0, z: 0, w: 0}
   relativeRotation: {x: 0, y: 0, z: 0, w: 0}
+  isReverseDirection: 1
   ry: 0
 --- !u!4 &1368989829
 Transform:
@@ -3446,6 +3447,7 @@ MonoBehaviour:
   height: 4
   width: 4
   numberOfTurns: 1
+  isFollowingRotationDirection: 1
 --- !u!23 &7696226106322102627
 MeshRenderer:
   m_ObjectHideFlags: 0

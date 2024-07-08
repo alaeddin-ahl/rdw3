@@ -13,6 +13,8 @@ public class Direction : MonoBehaviour
     public Quaternion rotationToDirection;
     public Quaternion relativeRotation;
 
+    public bool isReverseDirection = false;
+
     public float ry;
 
     void Start()
@@ -26,6 +28,11 @@ public class Direction : MonoBehaviour
         Vector3 positionB = objectB.position;
 
         direction = positionB - positionA;
+        if (isReverseDirection) {
+            direction = positionA - positionB;
+        }
+
+
         normalizedDirection = direction.normalized;
 
         direction.y = 0; 

@@ -14,6 +14,8 @@ public class HilecalRotation : MonoBehaviour
     public float width = 4.0f;
     public float numberOfTurns = 1.0f;
 
+    public bool isFollowingRotationDirection = false;
+
     void Start()
     {
     }
@@ -56,8 +58,10 @@ public class HilecalRotation : MonoBehaviour
 
         transform.localPosition = MapAngleToPosition(yRotationNormalized);
 
-        // 
-        rotationTransform.RotateAround(chairRotation.transform.position, Vector3.up, f);
+        if (isFollowingRotationDirection) {
+            rotationTransform.RotateAround(chairRotation.transform.position, Vector3.up, f);
+        } 
+        
     }
 
     // Update is called once per frame

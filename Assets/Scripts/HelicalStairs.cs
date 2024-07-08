@@ -41,7 +41,7 @@ public class HelicalStairs : MonoBehaviour
                 position.z);
             directionToCenter.y = 0; // Ignore height for rotation to face horizontally to the center
             
-            Quaternion localRotation = Quaternion.LookRotation(-directionToCenter);
+            Quaternion localRotation = Quaternion.LookRotation(directionToCenter);
 
             // Quaternion rotation = parent.rotation * localRotation;
             Quaternion rotation = localRotation;
