@@ -15,6 +15,8 @@ public class Direction : MonoBehaviour
 
     public bool isReverseDirection = false;
 
+    public bool is90Deg = false;
+
     public float ry;
 
     void Start()
@@ -28,10 +30,15 @@ public class Direction : MonoBehaviour
         Vector3 positionB = objectB.position;
 
         direction = positionB - positionA;
+        
         if (isReverseDirection) {
             direction = positionA - positionB;
         }
 
+        if (is90Deg) {
+            direction = new Vector3(direction.z, direction.y, -direction.x);
+        }
+        
 
         normalizedDirection = direction.normalized;
 
