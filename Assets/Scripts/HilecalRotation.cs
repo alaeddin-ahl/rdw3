@@ -31,11 +31,23 @@ public class HilecalRotation : MonoBehaviour
         chairRotation.OnChairRotate -= OnChairRotation;
     }
 
+    private float GetLerp(float angle)
+    {
+        // If direction is inward
+        if (!direction.is90Deg && !direction.isReverseDirection)
+        {
+            return Mathf.InverseLerp(-90, 90, angle);
+        }
+        else 
+        {
+            return Mathf.InverseLerp(90, -90, angle);
+        }
+    }
+
     public Vector3 MapAngleToPosition(float angle)
     {
-
-        // Map the angle to the parameter t
-        float t = Mathf.Lerp(0, 2 * Mathf.PI * numberOfTurns, Mathf.InverseLerp(-90, 90, angle));
+        float l = GetLerp(angle);
+        float t = Mathf.Lerp(0, 2 * Mathf.PI * numberOfTurns, l);
 
         // Calculate the position
         float x = radius * Mathf.Cos(t); 

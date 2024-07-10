@@ -8498,7 +8498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01af4cb6e21e406aa10926b9afede9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDirection: 0
+  currentDirection: 3
   directionText: {fileID: 2096839969}
   direction: {fileID: 0}
 --- !u!1 &1372433220
