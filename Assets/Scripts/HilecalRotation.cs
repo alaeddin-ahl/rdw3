@@ -46,7 +46,7 @@ public class HilecalRotation : MonoBehaviour
     }
 
 
-    private void OnChairRotation(Vector3 rotation, float yRotationNormalized, float yRotation)
+    private void OnChairRotation(Vector3 rotation, float yRotationNormalized)
     {
         float f= this.direction.ry;
         

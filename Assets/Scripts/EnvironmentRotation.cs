@@ -25,7 +25,7 @@ public class EnvironmentRotation : MonoBehaviour
         chairRotation.OnChairRotate -= OnChairRotation;
     }
 
-    private void OnChairRotation(Vector3 rotation, float yRotationNormalized, float yRotation)
+    private void OnChairRotation(Vector3 rotation, float yRotationNormalized)
     {
         Debug.Log("OnChairRotation: " + rotation );
 

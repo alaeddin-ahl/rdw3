@@ -10,8 +10,8 @@ public class AxisLines : MonoBehaviour
 
     void Start()
     {
-        // xLineRenderer = CreateLine("X_Axis", Color.red, transform.right);
-        // yLineRenderer = CreateLine("Y_Axis", Color.green, transform.up);
+        xLineRenderer = CreateLine("X_Axis", Color.red, transform.right);
+        yLineRenderer = CreateLine("Y_Axis", Color.green, transform.up);
         zLineRenderer = CreateLine("Z_Axis", Color.blue, transform.forward);
     }
 
